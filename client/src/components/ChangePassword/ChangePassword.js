@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ChangePassword.css";
 import Button from "@material-ui/core/Button";
-import { Container, Box, TextField } from "@mui/material";
+import { Container, Box, TextField, Stack } from "@mui/material";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 
@@ -150,23 +150,46 @@ function ChangePassword() {
           label="Confirm New Password"
           type="password"
         />
-        <Button type="submit" variant="contained" fullWidth sx={{ margin: 2 }}>
-          Change Password
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleCancel}
-          fullWidth
-          margin="normal"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Cancel
-        </Button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+        <Stack sx={{ pt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Stack direction="row" spacing={4} justifyContent="center">
+            <Button type="submit" variant="contained" fullWidth sx={{ margin: 2}}>
+                Change Password
+            </Button>
+            <Button 
+              variant="contained"
+              onClick={handleCancel}
+              fullWidth
+              margin="normal"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Cancel
+            </Button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+          </Stack>
+        </Stack>
       </Box>
     </Container>
   );
 }
 
 export default ChangePassword;
+
+/*
+
+<Button type="submit" variant="contained" fullWidth sx={{ margin: 2}} >
+Change Password
+</Button>
+<Button
+variant="contained"
+onClick={handleCancel}
+fullWidth
+margin="normal"
+sx={{ mt: 3, mb: 2 }}
+>
+Cancel
+</Button>
+{error && <p style={{ color: "red" }}>{error}</p>}
+{successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+
+*/
